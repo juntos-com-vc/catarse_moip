@@ -4,17 +4,14 @@ App.views.MoipForm.addChild('PaymentCard', _.extend({
   events: {
     'keyup input[type="text"]' : 'creditCardInputValidator',
     'keyup #payment_card_number' : 'onKeyupPaymentCardNumber',
-    'click input#credit_card_submit' : 'onSubmit',
+    'click #credit_card_submit' : 'onSubmit',
     'keyup #payment_card_cpf' : 'onUserDocumentKeyup'
   },
 
   activate: function(options){
     // Set credit card fields masks
     this.moipForm = this.parent;
-    this.$('input#payment_card_date').mask('99/99');
-    this.$('input#payment_card_birth').mask('99/99/9999');
-    this.$('input#payment_card_cpf').mask("999.999.999-99");
-    this.$('input#payment_card_phone').mask("(99) 9999-9999?9");
+    window.app.maskAllElements();
   },
 
   onKeyupPaymentCardNumber: function(e){
@@ -24,7 +21,6 @@ App.views.MoipForm.addChild('PaymentCard', _.extend({
   onSubmit: function(e) {
     var that = this;
     e.preventDefault();
-    $(e.currentTarget).hide();
     that.moipForm.loader.show();
 
     // Get token and send payment

@@ -1,6 +1,6 @@
 = javascript_include_tag 'catarse_moip'
 #catarse_moip_form
-  = form_tag 'javascript:void(0);', :class => 'moip' do
+  = form_tag 'jaascript:void(0);', :class => 'moip' do
     .back-payment-moip-options.next_step_after_valid_document
       .w-row.list_payment.w-form
         .w-col.w-col-7.w-col-small-7.back-payment-moip-options-column
@@ -19,14 +19,14 @@
             = text_field_tag :payment_card_name, nil, class: 'w-input text-field'
           .w-col.w-col-6.cpf
             = label_tag :payment_card_cpf, "CPF", class: 'field-label fontweight-semibold'
-            = text_field_tag :payment_card_cpf, nil, class: 'w-input text-field'
+            = text_field_tag :payment_card_cpf, nil, class: 'w-input text-field', data: {mask: '999.999.999-99'}
         .w-row
           .w-col.w-col-6.w-sub-col.phone
             = label_tag :payment_card_phone, "Telefone", class: 'field-label fontweight-semibold'
-            = text_field_tag :payment_card_phone, nil, class: 'w-input text-field'
+            = text_field_tag :payment_card_phone, nil, class: 'w-input text-field', data: {mask: '(99) 9999-9999?9'}
           .w-col.w-col-6.birth
             = label_tag :payment_card_birth, "Data de Nascimento", class: 'field-label fontweight-semibold'
-            = text_field_tag :payment_card_birth, nil, class: 'w-input text-field'
+            = text_field_tag :payment_card_birth, nil, class: 'w-input text-field', data: {mask: '99/99/9999'}
         .w-row
           .w-col.w-col-6.w-sub-col.number
             = label_tag :payment_card_number, 'Número do cartão' , class: 'field-label fontweight-semibold'
@@ -41,12 +41,15 @@
                 = text_field_tag :payment_card_source, nil, class: 'w-input text-field'
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6.date
                 = label_tag :payment_card_date, 'Data de Expiração', class: 'field-label fontweight-semibold'
-                = text_field_tag :payment_card_date, nil, class: 'w-input text-field'
+                = text_field_tag :payment_card_date, nil, class: 'w-input text-field', data: {mask: '99/99'}
         
         .w-row
           .w-col.w-col-push-3.w-col-6
-            #card-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
-            = submit_tag t('projects.contributions.review.form.labels.submit'), disabled: true, class: 'btn btn-large u-marginbottom-20', id: "credit_card_submit"
+            .payment-error-message.card.card-error.u-radius.zindex-10.u-marginbottom-30.w-hidden
+              .fontsize-smaller.fontweight-bold.u-marginbottom-10= t('.review_errors_title')
+              .message-text.fontsize-smaller = t('.review_errors')
+            .loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
+            = submit_tag t('projects.contributions.review.form.labels.submit'), class: 'btn btn-large u-marginbottom-20', id: "credit_card_submit"
             = render partial: 'terms'
       #payment_type_boleto_section.w-hidden.payment_section
         .w-row
@@ -56,7 +59,7 @@
         .w-row
           .w-col.w-col-push-3.w-col-6
             #card-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
-            = submit_tag t('projects.contributions.review.form.labels.build_boleto'), class: 'btn btn-large u-marginbottom-20', id: "build_boleto", disabled: true
+            = submit_tag t('projects.contributions.review.form.labels.build_boleto'), class: 'btn btn-large u-marginbottom-20', id: "build_boleto"
             = render partial: 'terms'
         .w-row
           .w-col.w-col-12

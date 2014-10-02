@@ -40,9 +40,8 @@ App.addChild('MoipForm', {
     if(response_data.Codigo == 914){
       response_data.Mensagem += '. Tente <a href="javascript:window.location.reload();">recarregar a página</a> e repetir a operação de pagamento.';
     }
-    this.message.find('p').html(response_data.Mensagem);
-    this.message.fadeIn('fast');
-    $('input[type="submit"]').removeAttr('disabled').show();
+    this.message.find('.message-text').html(response_data.Mensagem);
+    this.message.slideDown('slow');
   },
 
   checkoutSuccessful: function(data) {
@@ -74,11 +73,11 @@ App.addChild('MoipForm', {
   },
 
   activate: function(){
-    this.message = this.$('.next_step_after_valid_document .alert-danger');
+    this.message = this.$('.payment-error-message');
     this.contributionId = $('input#contribution_id').val();
     this.projectId = $('input#project_id').val();
 
-    this.loader = this.$('.loader');
+    this.loader = this.$('.loader img');
 
     window.checkoutSuccessful = _.bind(this.checkoutSuccessful, this);
     window.checkoutFailure = _.bind(this.checkoutFailure, this);

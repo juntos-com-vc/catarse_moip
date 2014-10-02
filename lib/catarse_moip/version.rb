@@ -1,3 +1,3 @@
 module CatarseMoip
-  VERSION = "2.3.6"
+  VERSION = "3.3.6"
 end
