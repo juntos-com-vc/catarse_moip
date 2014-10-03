@@ -2,7 +2,6 @@ App.views.MoipForm.addChild('PaymentCard', _.extend({
   el: '#payment_type_cards_section',
   
   events: {
-    'keyup input[type="text"]' : 'creditCardInputValidator',
     'keyup #payment_card_number' : 'onKeyupPaymentCardNumber',
     'click #credit_card_submit' : 'onSubmit',
     'keyup #payment_card_cpf' : 'onUserDocumentKeyup'
@@ -21,6 +20,11 @@ App.views.MoipForm.addChild('PaymentCard', _.extend({
   onSubmit: function(e) {
     var that = this;
     e.preventDefault();
+
+    if(!that.moipForm.validate()){
+      return false;
+    }
+
     that.moipForm.loader.show();
 
     // Get token and send payment
@@ -44,26 +48,6 @@ App.views.MoipForm.addChild('PaymentCard', _.extend({
       };
       MoipWidget(settings);
     });
-  },
-
-  hasContent: function(element) {
-    var value = $(element).val().replace(/[\-\.\_\/\s]/g, '');
-    if(value && value.length > 0){
-      $(element).addClass("ok").removeClass("error")
-      return true
-    } else {
-      $(element).addClass("error").removeClass("ok")
-      return false
-    }
-  },
-
-  creditCardInputValidator: function() {
-    var that = this;
-    var all_ok = true;
-    $.each($('#payment_type_cards_section input[type="text"]'), function(i, item){
-      all_ok = that.hasContent(item);
-    });
-    $('input#credit_card_submit').attr('disabled', !all_ok);
   },
 
   getCardFlag: function(number) {

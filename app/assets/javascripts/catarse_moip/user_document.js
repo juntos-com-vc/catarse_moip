@@ -30,11 +30,11 @@ App.views.MoipForm.UserDocument = {
         });
 
       } else {
-        $documentField.addClass('error').removeClass('ok');
+        $documentField.trigger('invalid');
       }
     }
      else{
-        $documentField.addClass('error').removeClass('ok');
+        $documentField.trigger('invalid')
      }
 
   },

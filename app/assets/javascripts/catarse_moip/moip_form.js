@@ -1,5 +1,10 @@
-App.addChild('MoipForm', {
+App.addChild('MoipForm', _.extend({
   el: 'form.moip',
+
+  events: {
+    'blur input:not(#payment_card_cpf)' : 'checkInput'
+  },
+
 
   getMoipToken: function(onSuccess){
     var that = this;
@@ -81,6 +86,7 @@ App.addChild('MoipForm', {
 
     window.checkoutSuccessful = _.bind(this.checkoutSuccessful, this);
     window.checkoutFailure = _.bind(this.checkoutFailure, this);
+    this.setupForm();
   }
-});
+}, Skull.Form));
 

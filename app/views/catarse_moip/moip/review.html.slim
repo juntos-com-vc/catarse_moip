@@ -16,32 +16,46 @@
         .w-row
           .w-col.w-col-6.w-sub-col
             = label_tag :payment_card_name, "Nome do titular do cartão", class: 'field-label fontweight-semibold'
-            = text_field_tag :payment_card_name, nil, class: 'w-input text-field'
+            = text_field_tag :payment_card_name, nil, class: 'w-input text-field', required: true
+            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_name"]
+              | Por favor digite o nome escrito no cartão
           .w-col.w-col-6.cpf
             = label_tag :payment_card_cpf, "CPF", class: 'field-label fontweight-semibold'
-            = text_field_tag :payment_card_cpf, nil, class: 'w-input text-field', data: {mask: '999.999.999-99'}
+            = text_field_tag :payment_card_cpf, nil, class: 'w-input text-field', data: {mask: '999.999.999-99'}, required: true
+            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_cpf"]
+              | Verifique o CPF do titular do cartão
         .w-row
           .w-col.w-col-6.w-sub-col.phone
             = label_tag :payment_card_phone, "Telefone", class: 'field-label fontweight-semibold'
-            = text_field_tag :payment_card_phone, nil, class: 'w-input text-field', data: {mask: '(99) 9999-9999?9'}
+            = text_field_tag :payment_card_phone, nil, class: 'w-input text-field', data: {mask: '(99) 9999-9999?9'}, required: true
+            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_phone"]
+              | Por favor digite o telefone de contato do titular
           .w-col.w-col-6.birth
             = label_tag :payment_card_birth, "Data de Nascimento", class: 'field-label fontweight-semibold'
-            = text_field_tag :payment_card_birth, nil, class: 'w-input text-field', data: {mask: '99/99/9999'}
+            = text_field_tag :payment_card_birth, nil, class: 'w-input text-field', data: {mask: '99/99/9999'}, required: true
+            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_birth"]
+              | Por favor digite a data de nascimento do titular
         .w-row
           .w-col.w-col-6.w-sub-col.number
             = label_tag :payment_card_number, 'Número do cartão' , class: 'field-label fontweight-semibold'
             .card-brand.prefix.text-field
               .fontsize-smallest.fontcolor-secondary.u-text-center
             .card-number
-              = text_field_tag :payment_card_number, nil, class: 'w-input text-field postfix'
+              = text_field_tag :payment_card_number, nil, class: 'w-input text-field postfix', required: true
+            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_number"]
+              | Por favor verifique o número do cartão de crédito
           .w-col.w-col-6
             .w-row
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle.source
                 = label_tag :payment_card_source, 'Cód. Segurança', class: 'field-label fontweight-semibold'
-                = text_field_tag :payment_card_source, nil, class: 'w-input text-field'
+                = text_field_tag :payment_card_source, nil, class: 'w-input text-field', required: true
+                .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_source"]
+                  | Veja o código de segurança do cartão abaixo da tarja magnética
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6.date
                 = label_tag :payment_card_date, 'Data de Expiração', class: 'field-label fontweight-semibold'
-                = text_field_tag :payment_card_date, nil, class: 'w-input text-field', data: {mask: '99/99'}
+                = text_field_tag :payment_card_date, nil, class: 'w-input text-field', data: {mask: '99/99'}, required: true
+                .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_date"]
+                  | Qual a data de expiração no cartão?
         
         .w-row
           .w-col.w-col-push-3.w-col-6
