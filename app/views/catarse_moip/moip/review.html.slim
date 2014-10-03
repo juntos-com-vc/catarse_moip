@@ -17,23 +17,23 @@
           .w-col.w-col-6.w-sub-col
             = label_tag :payment_card_name, "Nome do titular do cartão", class: 'field-label fontweight-semibold'
             = text_field_tag :payment_card_name, nil, class: 'w-input text-field', required: true
-            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_name"]
+            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_name"]
               | Por favor digite o nome escrito no cartão
           .w-col.w-col-6.cpf
             = label_tag :payment_card_cpf, "CPF", class: 'field-label fontweight-semibold'
             = text_field_tag :payment_card_cpf, nil, class: 'w-input text-field', data: {mask: '999.999.999-99'}, required: true
-            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_cpf"]
+            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_cpf"]
               | Verifique o CPF do titular do cartão
         .w-row
           .w-col.w-col-6.w-sub-col.phone
             = label_tag :payment_card_phone, "Telefone", class: 'field-label fontweight-semibold'
             = text_field_tag :payment_card_phone, nil, class: 'w-input text-field', data: {mask: '(99) 9999-9999?9'}, required: true
-            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_phone"]
+            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_phone"]
               | Por favor digite o telefone de contato do titular
           .w-col.w-col-6.birth
             = label_tag :payment_card_birth, "Data de Nascimento", class: 'field-label fontweight-semibold'
             = text_field_tag :payment_card_birth, nil, class: 'w-input text-field', data: {mask: '99/99/9999'}, required: true
-            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_birth"]
+            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_birth"]
               | Por favor digite a data de nascimento do titular
         .w-row
           .w-col.w-col-6.w-sub-col.number
@@ -42,42 +42,56 @@
               .fontsize-smallest.fontcolor-secondary.u-text-center
             .card-number
               = text_field_tag :payment_card_number, nil, class: 'w-input text-field postfix', required: true
-            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_number"]
+            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_number"]
               | Por favor verifique o número do cartão de crédito
           .w-col.w-col-6
             .w-row
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle.source
                 = label_tag :payment_card_source, 'Cód. Segurança', class: 'field-label fontweight-semibold'
                 = text_field_tag :payment_card_source, nil, class: 'w-input text-field', required: true
-                .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_source"]
+                .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_source"]
                   | Veja o código de segurança do cartão abaixo da tarja magnética
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6.date
                 = label_tag :payment_card_date, 'Data de Expiração', class: 'field-label fontweight-semibold'
                 = text_field_tag :payment_card_date, nil, class: 'w-input text-field', data: {mask: '99/99'}, required: true
-                .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-for="payment_card_date"]
+                .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_date"]
                   | Qual a data de expiração no cartão?
         
         .w-row
-          .w-col.w-col-push-3.w-col-6
+          .w-col.w-col-12
             .payment-error-message.card.card-error.u-radius.zindex-10.u-marginbottom-30.w-hidden
               .fontsize-smaller.fontweight-bold.u-marginbottom-10= t('.review_errors_title')
               .message-text.fontsize-smaller = t('.review_errors')
-            .loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
+        .w-row
+          .w-col.w-col-push-3.w-col-6
+            .loader.u-text-center.w-col.w-col-12.u-marginbottom-30 = image_tag "catarse_bootstrap/loader.gif"
             = submit_tag t('projects.contributions.review.form.labels.submit'), class: 'btn btn-large u-marginbottom-20', id: "credit_card_submit"
             = render partial: 'terms'
       #payment_type_boleto_section.w-hidden.payment_section
         .w-row
           .w-col.w-col-6
             = label_tag 'user_document_payment_slip', t('projects.contributions.review.form.labels.document'), class: 'field-label fontweight-semibold'
-            = text_field_tag 'user_document_payment_slip', nil, { autocomplete: 'off', class: 'w-input text-field' }
+            = text_field_tag 'user_document_payment_slip', nil, { autocomplete: 'off', class: 'w-input text-field', required: true, data: {mask: '999.999.999-99'} }
+            .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="user_document_payment_slip"]
+              | Verifique o CPF
+        .w-row
+          .w-col.w-col-12
+            .card.card-message.u-radius.fontsize-small.zindex-10.u-marginbottom-30
+              | Após clicar no botão abaixo, você receberá um link com o boleto para completar o pagamento.
+        .w-row
+          .w-col.w-col-12
+            .payment-error-message.card.card-error.u-radius.zindex-10.u-marginbottom-30.w-hidden
+              .fontsize-smaller.fontweight-bold.u-marginbottom-10= t('.review_errors_title')
+              .message-text.fontsize-smaller = t('.review_errors')
         .w-row
           .w-col.w-col-push-3.w-col-6
-            #card-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
+            #card-loading.loader.u-text-center.w-col.w-col-12.u-marginbottom-30 = image_tag "catarse_bootstrap/loader.gif"
             = submit_tag t('projects.contributions.review.form.labels.build_boleto'), class: 'btn btn-large u-marginbottom-20', id: "build_boleto"
             = render partial: 'terms'
         .w-row
           .w-col.w-col-12
-            p.subtitle.w-hidden= t('projects.contributions.review.form.labels.payment_boleto_subtitle')
-            .link_content
+            #payment-slip-link.card.card-message.fontsize-small.u-radius.u-marginbottom-30.zindex-10.w-hidden
+              .link_content.fontsize-smaller
+              .fontsize-smaller Você também receberá um email com esse boleto.
 
 == javascript_include_tag js_moip_index_path

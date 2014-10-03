@@ -2,7 +2,7 @@ App.addChild('MoipForm', _.extend({
   el: 'form.moip',
 
   events: {
-    'blur input:not(#payment_card_cpf)' : 'checkInput'
+    'blur input:not(#payment_card_cpf):not(#user_document_payment_slip)' : 'checkInput'
   },
 
 
@@ -60,10 +60,10 @@ App.addChild('MoipForm', _.extend({
 
       // Go on otherwise
       if(data.url && $('#payment_type_cards_section').css('display') != 'block') {
-        var link = $('<a target="__blank">'+data.url+'</a>')
+        var link = $('<a class="alt-link" target="__blank">Clique aqui para ver o boleto e completar o pagamento.</a>')
         link.attr('href', data.url);
-        $('.link_content:visible').empty().html(link);
-        $('.payment_section:visible .subtitle').fadeIn('fast');
+        $('.link_content').empty().html(link);
+        $('#payment-slip-link').slideDown('slow');
       }
       else {
         var thank_you = $('#project_review').data('thank-you-path');
@@ -80,7 +80,7 @@ App.addChild('MoipForm', _.extend({
   activate: function(){
     this.message = this.$('.payment-error-message');
     this.contributionId = $('input#contribution_id').val();
-    this.projectId = $('input#project_id').val();
+    this.projectId = $('input#contribution_project_id').val();
 
     this.loader = this.$('.loader img');
 

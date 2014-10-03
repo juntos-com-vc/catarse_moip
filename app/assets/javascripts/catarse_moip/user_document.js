@@ -14,13 +14,14 @@ App.views.MoipForm.UserDocument = {
     var resultCnpj = this.validateCnpj(documentNumber.replace(/[\/.\-\_ ]/g, ''));
     var numberLength = documentNumber.replace(/[.\-\_ ]/g, '').length
     if(numberLength > 10) {
-     if($documentField.attr('id') != 'payment_card_cpf'){
-         if(numberLength == 11) {$documentField.mask('999.999.999-99?999'); }//CPF
-         else if(numberLength == 14 ){$documentField.mask('99.999.999/9999-99');}//CNPJ
-         if(numberLength != 14 || numberLength != 11){ $documentField.unmask()}
-        }
+      if($documentField.attr('id') != 'payment_card_cpf'){
+        if(numberLength == 11) {$documentField.mask('999.999.999-99?999'); }//CPF
+        else if(numberLength == 14 ){$documentField.mask('99.999.999/9999-99');}//CNPJ
+        if(numberLength != 14 || numberLength != 11){ $documentField.unmask()}
+      }
 
-     if(resultCpf || resultCnpj) {
+      if(resultCpf || resultCnpj) {
+        $('[data-error-for=' + $documentField.prop('id') + ']').hide();
         $documentField.addClass('ok').removeClass('error');
 
         $.ajax({
@@ -33,9 +34,9 @@ App.views.MoipForm.UserDocument = {
         $documentField.trigger('invalid');
       }
     }
-     else{
-        $documentField.trigger('invalid')
-     }
+    else{
+      $documentField.trigger('invalid')
+    }
 
   },
 
