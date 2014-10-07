@@ -14,6 +14,7 @@ App.views.MoipForm.addChild('PaymentSlip', _.extend({
   onBuildBoletoClick: function(e){
     var that = this;
     e.preventDefault();
+    $(e.currentTarget).hide();
     that.moipForm.loader.show();
 
     // Get token and send payment
