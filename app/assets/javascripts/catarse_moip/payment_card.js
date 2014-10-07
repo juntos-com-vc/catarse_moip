@@ -4,7 +4,7 @@ App.views.MoipForm.addChild('PaymentCard', _.extend({
   events: {
     'keyup #payment_card_number' : 'onKeyupPaymentCardNumber',
     'click #credit_card_submit' : 'onSubmit',
-    'keyup #payment_card_cpf' : 'onUserDocumentKeyup'
+    'blur #payment_card_cpf' : 'onUserDocumentKeyup'
   },
 
   activate: function(options){

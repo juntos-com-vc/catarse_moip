@@ -4,7 +4,7 @@ App.views.MoipForm.addChild('PaymentSlip', _.extend({
   events: {
     'click input#build_boleto' : 'onBuildBoletoClick',
     'click .link_content a' : 'onContentClick',
-    'keyup #user_document_payment_slip' : 'onUserDocumentKeyup'
+    'blur #user_document_payment_slip' : 'onUserDocumentKeyup'
   },
 
   activate: function(options){
