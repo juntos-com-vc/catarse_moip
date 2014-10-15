@@ -4,13 +4,15 @@
     .back-payment-moip-options.next_step_after_valid_document
       .w-row.list_payment.w-form
         .w-col.w-col-7.w-col-small-7.back-payment-moip-options-column
-          = radio_button_tag 'payment_type', "cards", false, class: 'w-radio-input back-payment-radio-button'
-          = label_tag :payment_type_cards, nil, class: "cards w-form-label" do
-            = image_tag 'catarse_bootstrap/payment_cards.jpg'
+          .w-radio.w-clearfix
+            = radio_button_tag 'payment_type', "cards", false, class: 'w-radio-input back-payment-radio-button'
+            = label_tag :payment_type_cards, nil, class: "cards w-form-label" do
+              = image_tag 'catarse_bootstrap/payment_cards.jpg'
         .w-col.w-col-5.w-col-small-5.back-payment-moip-options-column
-          = radio_button_tag 'payment_type', "boleto", false, class: 'w-radio-input back-payment-radio-button'
-          = label_tag :payment_type_boleto, class: "boleto w-form-label" do
-            = image_tag 'catarse_bootstrap/payment_boleto.jpg'
+          .w-radio.w-clearfix
+            = radio_button_tag 'payment_type', "boleto", false, class: 'w-radio-input back-payment-radio-button'
+            = label_tag :payment_type_boleto, class: "boleto w-form-label" do
+              = image_tag 'catarse_bootstrap/payment_boleto.png'
     .formwrapper 
       #payment_type_cards_section.payment_section
         .w-row
