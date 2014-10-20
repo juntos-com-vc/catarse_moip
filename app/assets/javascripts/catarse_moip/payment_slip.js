@@ -15,6 +15,7 @@ App.views.MoipForm.addChild('PaymentSlip', _.extend({
     var that = this;
     e.preventDefault();
     $(e.currentTarget).hide();
+    this.$('#payment-slip-instructions').slideUp('slow');
     that.moipForm.loader.show();
 
     // Get token and send payment
