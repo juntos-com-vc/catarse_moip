@@ -27,12 +27,12 @@
             .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_cpf"]
               | Verifique o CPF do titular do cartão
         .w-row
-          .w-col.w-col-6.w-sub-col.phone
+          .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle.phone
             = label_tag :payment_card_phone, "Telefone", class: 'field-label fontweight-semibold'
             = text_field_tag :payment_card_phone, nil, class: 'w-input text-field', data: {mask: '(99) 9999-9999?9'}, required: true
             .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_phone"]
               | Por favor digite o telefone de contato do titular
-          .w-col.w-col-6.birth
+          .w-col.w-col-6.w-col-small-6.w-col-tiny-6.birth
             = label_tag :payment_card_birth, "Data de Nascimento", class: 'field-label fontweight-semibold'
             = text_field_tag :payment_card_birth, nil, class: 'w-input text-field', data: {mask: '99/99/9999'}, required: true
             .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_birth"]
@@ -78,7 +78,7 @@
               | Verifique o CPF ou CNPJ
         .w-row
           .w-col.w-col-12
-            .card.card-message.u-radius.fontsize-small.zindex-10.u-marginbottom-30
+            #payment-slip-instructions.card.card-message.u-radius.fontsize-small.zindex-10.u-marginbottom-30
               | Após clicar no botão abaixo, você receberá um link com o boleto para completar o pagamento.
         .w-row
           .w-col.w-col-12
