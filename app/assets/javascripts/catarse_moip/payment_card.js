@@ -14,7 +14,7 @@ App.views.MoipForm.addChild('PaymentCard', _.extend({
   },
 
   onKeyupPaymentCardNumber: function(e){
-    this.$('input#payment_card_flag').val(this.getCardFlag($(e.currentTarget).val()))
+    this.$('#payment_card_flag').html(this.getCardFlag($(e.currentTarget).val()))
   },
 
   onSubmit: function(e) {
@@ -54,16 +54,16 @@ App.views.MoipForm.addChild('PaymentCard', _.extend({
     var cc = (number + '').replace(/\s/g, ''); //remove space
 
     if ((/^(34|37)/).test(cc) && cc.length == 15) {
-      return 'AmericanExpress'; //AMEX begins with 34 or 37, and length is 15.
+      return 'AMEX'; //AMEX begins with 34 or 37, and length is 15.
     } else if ((/^(51|52|53|54|55)/).test(cc) && cc.length == 16) {
-      return 'Mastercard'; //MasterCard beigins with 51-55, and length is 16.
+      return 'MASTER'; //MasterCard beigins with 51-55, and length is 16.
     } else if ((/^(4)/).test(cc) && (cc.length == 13 || cc.length == 16)) {
-      return 'Visa'; //VISA begins with 4, and length is 13 or 16.
+      return 'VISA'; //VISA begins with 4, and length is 13 or 16.
     } else if ((/^(300|301|302|303|304|305|36|38)/).test(cc) && cc.length == 14) {
-      return 'Diners'; //Diners Club begins with 300-305 or 36 or 38, and length is 14.
+      return 'DINERS'; //Diners Club begins with 300-305 or 36 or 38, and length is 14.
     } else if ((/^(38)/).test(cc) && cc.length == 19) {
-      return 'Hipercard';
+      return 'HIPER';
     }
-    return 'Desconhecido';
+    return '';
   }
 }, App.views.MoipForm.UserDocument));

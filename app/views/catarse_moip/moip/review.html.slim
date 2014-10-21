@@ -40,21 +40,23 @@
         .w-row
           .w-col.w-col-6.w-sub-col.number
             = label_tag :payment_card_number, 'Número do cartão' , class: 'field-label fontweight-semibold'
-            .card-brand.prefix.text-field
-              .fontsize-smallest.fontcolor-secondary.u-text-center
-            .card-number
-              = text_field_tag :payment_card_number, nil, class: 'w-input text-field postfix', required: true
+            .w-row
+              .w-col.w-col-9.w-col-small-9.w-col-tiny-9
+                = text_field_tag :payment_card_number, nil, class: 'w-input text-field prefix', required: true
+              .w-col.w-col-3.w-col-small-3.w-col-tiny-3.text-field.postfix.no-hover
+                #payment_card_flag.fontsize-smallest.fontcolor-secondary.u-text-center
             .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_number"]
               | Por favor verifique o número do cartão de crédito
           .w-col.w-col-6
             .w-row
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle.source
-                = label_tag :payment_card_source, 'Cód. Segurança', class: 'field-label fontweight-semibold'
+                = label_tag :payment_card_source, 'Cód. Segurança', class: 'field-label fontweight-semibold w-hidden-medium'
+                = label_tag :payment_card_source, 'CVC', class: 'field-label fontweight-semibold w-hidden-main w-hidden-small w-hidden-tiny'
                 = text_field_tag :payment_card_source, nil, class: 'w-input text-field', required: true
                 .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_source"]
                   | Veja o código de segurança do cartão abaixo da tarja magnética
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6.date
-                = label_tag :payment_card_date, 'Data de Expiração', class: 'field-label fontweight-semibold'
+                = label_tag :payment_card_date, 'Expiração', class: 'field-label fontweight-semibold'
                 = text_field_tag :payment_card_date, nil, class: 'w-input text-field', data: {mask: '99/99'}, required: true
                 .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_date"]
                   | Qual a data de expiração no cartão?
