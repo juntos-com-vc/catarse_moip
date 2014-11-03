@@ -23,18 +23,18 @@
               | Por favor digite o nome escrito no cartão
           .w-col.w-col-6.cpf
             = label_tag :payment_card_cpf, "CPF", class: 'field-label fontweight-semibold'
-            = text_field_tag :payment_card_cpf, nil, class: 'w-input text-field', data: {mask: '999.999.999-99'}, required: true
+            = text_field_tag :payment_card_cpf, nil, class: 'w-input text-field', data: {fixed_mask: '999.999.999-99'}, required: true
             .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_cpf"]
               | Verifique o CPF do titular do cartão
         .w-row
           .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle.phone
             = label_tag :payment_card_phone, "Telefone", class: 'field-label fontweight-semibold'
-            = text_field_tag :payment_card_phone, nil, class: 'w-input text-field', data: {mask: '(99) 9999-9999?9'}, required: true
+            = text_field_tag :payment_card_phone, nil, class: 'w-input text-field', data: {fixed_mask: '(99) 9999-99999'}, required: true
             .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_phone"]
               | Por favor digite o telefone de contato do titular
           .w-col.w-col-6.w-col-small-6.w-col-tiny-6.birth
             = label_tag :payment_card_birth, "Data de Nascimento", class: 'field-label fontweight-semibold'
-            = text_field_tag :payment_card_birth, nil, class: 'w-input text-field', data: {mask: '99/99/9999'}, required: true
+            = text_field_tag :payment_card_birth, nil, class: 'w-input text-field', data: {fixed_mask: '99/99/9999'}, required: true
             .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_birth"]
               | Por favor digite a data de nascimento do titular
         .w-row
@@ -57,7 +57,7 @@
                   | Veja o código de segurança do cartão abaixo da tarja magnética
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6.date
                 = label_tag :payment_card_date, 'Expiração', class: 'field-label fontweight-semibold'
-                = text_field_tag :payment_card_date, nil, class: 'w-input text-field', data: {mask: '99/99'}, required: true
+                = text_field_tag :payment_card_date, nil, class: 'w-input text-field', data: {fixed_mask: '99/99'}, required: true
                 .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_date"]
                   | Qual a data de expiração no cartão?
         

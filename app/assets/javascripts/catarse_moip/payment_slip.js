@@ -14,6 +14,11 @@ App.views.MoipForm.addChild('PaymentSlip', _.extend({
   onBuildBoletoClick: function(e){
     var that = this;
     e.preventDefault();
+
+    if(!that.moipForm.validate()){
+      return false;
+    }
+
     $(e.currentTarget).hide();
     this.$('#payment-slip-instructions').slideUp('slow');
     that.moipForm.loader.show();
