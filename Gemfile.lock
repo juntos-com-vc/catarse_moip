@@ -10,7 +10,7 @@ GIT
 PATH
   remote: .
   specs:
-    catarse_moip (3.0.4)
+    catarse_moip (3.0.5)
       enumerate_it
       libxml-ruby (~> 2.6.0)
       rails (~> 4.0)
@@ -63,7 +63,7 @@ GEM
     i18n (0.6.11)
     json (1.8.1)
     libxml-ruby (2.6.0)
-    mail (2.6.1)
+    mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
     mini_portile (0.6.0)
