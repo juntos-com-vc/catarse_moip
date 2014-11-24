@@ -137,7 +137,7 @@ module CatarseMoip
           case params[:status_pagamento].to_i
           when TransactionStatus::PROCESS
             payment_notification.deliver_process_notification
-          when TransactionStatus::AUTHORIZED
+          when TransactionStatus::AUTHORIZED, TransactionStatus::FINISHED
             contribution.confirm! unless contribution.confirmed?
           when TransactionStatus::WRITTEN_BACK, TransactionStatus::REFUNDED
             contribution.refund! unless contribution.refunded?
