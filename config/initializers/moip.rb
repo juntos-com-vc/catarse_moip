@@ -6,9 +6,9 @@ end
 
 MOIP_V2_ENDPOINT =  begin
                       if PaymentEngines.configuration.get_without_cache(:moip_test) == 'true'
-                        'https://api.moip.com.br'
-                      else
                         'https://test.moip.com.br'
+                      else
+                        'https://api.moip.com.br'
                       end
                     rescue Exception => e
                       'https://test.moip.com.br'
