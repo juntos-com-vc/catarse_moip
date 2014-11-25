@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.test_files = s.files.grep(%r{^(test|spec|features)/})
 
   s.add_dependency "rails", "~> 4.0"
+  s.add_dependency "httparty"
   s.add_dependency('libxml-ruby', '~> 2.6.0')
   s.add_dependency "enumerate_it"
 
