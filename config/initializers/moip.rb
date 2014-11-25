@@ -3,3 +3,13 @@
   config.token = (PaymentEngines.configuration.get_without_cache(:moip_token) rescue nil) || ''
   config.key = (PaymentEngines.configuration.get_without_cache(:moip_key) rescue nil) || ''
 end
+
+MOIP_V2_ENDPOINT =  begin
+                      if PaymentEngines.configuration.get_without_cache(:moip_test) == 'true'
+                        'https://api.moip.com.br'
+                      else
+                        'https://test.moip.com.br'
+                      end
+                    rescue Exception => e
+                      'https://test.moip.com.br'
+                    end
