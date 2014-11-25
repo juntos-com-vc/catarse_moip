@@ -14,11 +14,11 @@ module CatarseMoip
     end
 
     def can_do_refund?
-      false
+      true
     end
 
-    def direct_refund
-      false
+    def direct_refund contribution
+      CatarseMoip::V2::Refund.start(contribution)
     end
 
   end
