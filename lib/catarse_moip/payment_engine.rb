@@ -18,7 +18,7 @@ module CatarseMoip
     end
 
     def direct_refund contribution
-      CatarseMoip::V2::Refund.start(contribution)
+      ::CatarseMoip::V2::Refund.start(contribution)
     end
 
   end
