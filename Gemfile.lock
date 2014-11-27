@@ -10,7 +10,7 @@ GIT
 PATH
   remote: .
   specs:
-    catarse_moip (2.3.6)
+    catarse_moip (2.4.0)
       enumerate_it
       httparty
       libxml-ruby (~> 2.6.0)
