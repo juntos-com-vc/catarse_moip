@@ -55,8 +55,13 @@ module CatarseMoip
       @contribution = PaymentEngines.find_payment id: params[:id], user_id: current_user.id
 
       ::MoipTransparente::Config.test = (PaymentEngines.configuration[:moip_test] == 'true')
-      ::MoipTransparente::Config.access_token = PaymentEngines.configuration[:moip_token]
-      ::MoipTransparente::Config.access_key = PaymentEngines.configuration[:moip_key]
+      if contribution.project.category_id == 11
+        ::MoipTransparente::Config.access_token = PaymentEngines.configuration[:garupa_moip_token]
+        ::MoipTransparente::Config.access_key = PaymentEngines.configuration[:garupa_moip_key]
+      else
+        ::MoipTransparente::Config.access_token = PaymentEngines.configuration[:moip_token]
+        ::MoipTransparente::Config.access_key = PaymentEngines.configuration[:moip_key]
+      end
 
       @moip = ::MoipTransparente::Checkout.new
 
