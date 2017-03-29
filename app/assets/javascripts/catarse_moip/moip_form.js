@@ -60,7 +60,7 @@ App.addChild('MoipForm', _.extend({
 
       // Go on otherwise
       if(data.url && $('#payment_type_cards_section').css('display') != 'block') {
-        var link = $('<a class="alt-link" target="__blank">Clique aqui para ver o boleto e completar o pagamento.</a>')
+        var link = $('<a class="alt-link" target="__blank">Clique aqui gerar o boleto e completar o pagamento.</a>')
         link.attr('href', data.url);
         $('.link_content').empty().html(link);
         $('#payment-slip-link').slideDown('slow');
